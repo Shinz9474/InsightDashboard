@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>
+        Projects
+    </title>
+</head>
+
+<body>
+
+    <section>
+        <!--for demo wrap-->
+        <h1>Fixed Table header</h1>
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Company</th>
+                        <th>Price</th>
+                        <th>Change</th>
+                        <th>Change %</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div">
+            <table id='projects' cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <tr>
+                        <td>AAC</td>
+                        <td>AUSTRALIAN COMPANY </td>
+                        <td>$1.38</td>
+                        <td>+2.01</td>
+                        <td>-0.36%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        const projectBody = document.querySelector("#projects > tbody");
+
+        console.log(projectBody);
+        function loadProjects() {
+            
+            var xhr = new XMLHttpRequest();
+            var response;
+            xhr.open('GET', 'http://localhost:8000/api/projects', false);
+
+            xhr.onload = function () {
+                if (xhttp.status == 200) {
+                    response = JSON.parse(xhttp.responseText);
+                    console.log(responseText);
+                }
+                else {
+                    console.warn("Error loading the response from 'http://localhost:8000/api/projects'");
+                }
+            }
+
+            xkr.send();
+
+            response.Projects.forEach(row => {
+
+                const tr = document.createElement('tr');
+
+                row.forEach(key => {
+
+                    const td = document.createElement('td');
+                    td.textContent = key;
+                    tr.appendChild(td);
+                });
+                projectBody.append(tr)
+            });
+        }
+    </script>
+</body>
+
+</html>

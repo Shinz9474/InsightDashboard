@@ -1,0 +1,107 @@
+<html>
+
+<head>
+	<title>MyDashboard</title>
+
+	<link rel="stylesheet" type="text/css" href="LoginPage.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+
+	<script type="text/javascript">
+		function validate() {
+			var usrnme = document.getElementById('username').value;
+			var pswd = document.getElementById('password').value;
+
+			var authenticater = "http://localhost:8000/user/authenticate?username=" + usrnme + "&password=" + pswd;
+			var xhttp = new XMLHttpRequest();
+
+			xhttp.open('GET', authenticater, true);
+			var response;
+
+			xhttp.onload = function () {
+				if (xhttp.status == 200) {
+					response = JSON.parse(xhttp.responseText); 
+					console.log(response);
+
+					if (response.Processing_message == "Valid User") {
+						document.getElementById("message").innerHTML = "You have successfully logged in";
+						console.log("Successfully logged in");
+						Redirect("Countries.html");
+					}
+					else {
+						document.getElementById("message").innerHTML = "Invalid credentials";
+					}
+				}
+			}
+			xhttp.send();
+		}
+
+		function Redirect(location) {
+			window.location = location;
+		}
+	</script>
+</head>
+
+<body>
+
+
+	<h1 id='heading'>Insight Dashboard</h1>
+	<h2 id='subheading'><i>Enter your Username and Password</i></h4>
+		<span>
+			<h5 style="color:whitesmoke;"> Username: </h5><input type='text'  id='username'></input><br>
+		</span>
+		<h5 style="color:whitesmoke;"> Password: </h5><input type='password'  id='password'></input><br><br>
+				
+			<button onclick="validate()">
+				Login
+			</button>
+		
+		<button type='button' id='submitbtn' onclick="validate()">SUBMIT</button><br><br>
+		<p id="message"></p>
+		<a href="https://www.google.com" id="about" target="_blank">About MyDashboard</a>
+
+
+
+		<!--===============================================================================================-->
+		<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/animsition/js/animsition.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/bootstrap/js/popper.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/select2/select2.min.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/daterangepicker/moment.min.js"></script>
+		<script src="vendor/daterangepicker/daterangepicker.js"></script>
+		<!--===============================================================================================-->
+		<script src="vendor/countdowntime/countdowntime.js"></script>
+		<!--===============================================================================================-->
+		<script src="js/main.js"></script>
+
+
+</body>
+
+</html>

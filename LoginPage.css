@@ -1,0 +1,42 @@
+		body 
+		{
+		background-image: url("Testgif.gif");
+		}
+
+		#heading 
+		{
+		font-family: verdana;
+		color: White;
+		margin-left: 500px;
+		}
+		
+		#subheading
+		{
+		color: White;		
+		}
+		
+		#message
+		{
+		color: White;
+		}		
+		
+		.txtbox
+		{
+		color:Black;
+		background-color: White;		
+		}
+		
+		#submitbtn
+		{
+		color: Black;
+		background-color: White;
+		padding :10px 20px;
+		}
+		
+		#submitbtn:hover{background-color: red}
+		
+		#about
+		{
+		color:White;
+		}
+		
